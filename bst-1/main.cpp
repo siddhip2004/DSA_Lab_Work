@@ -73,47 +73,35 @@ void inorder(struct node* m)
     //cout<<endl;
 }
 
-void preorder()
+void preorder(struct node *p)
 {
-    stack<int>st;
-    node *p = (struct node *)malloc(sizeof(struct node));
-    node *a;
+    stack<node*>st;
+    //node *p = (struct node *)malloc(sizeof(struct node));
+    node *a=NULL;
     p=root;
-    a=p;
-    st.push(p->data);
+    //a=p;
+    //st.push(p->data);
     
-    while(!st.empty())
+    cout<<"Preorder traversal is: ";
+    
+    while(!st.empty() || p!=NULL)
     {
-        
-        
-        if(p->left!=NULL)
+
+     if(p!=NULL)
         {
-            cout<<st.top();
-            st.pop();
-            a=p;
-            p=a->left;
-            st.push(p->data);
-            continue;
+            cout<<p->data<<" ";
+            st.push(p);
+            p=p->left;
         }
         
-        else if(p->left==NULL && p->right!=NULL)
-        {
-            cout<<st.top();
-            st.pop();
-            a=p;
-            p=p->right;
-            st.push(p->data);
-            continue;
-        }
-        
-        else
+      else 
+      {
+          a=st.top();
+          st.pop();
+          p=a->right;
+      }
         
     }
-    // while(p->left!=NULL)
-    // {
-        
-    // }
-    
 }
 
 void search(int key)
@@ -162,6 +150,24 @@ void search(int key)
     //return p;
 }
 
+bool check(root)
+{
+    if(root!=NULL)
+    {
+        if((root->left!=NULL && root->right !=NULL) || (root->left==NULL || root->right==NULL))
+        {
+            check(root->left);
+            check(root->right);
+        }
+        
+        else 
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 int main()
 {
     create(10);
@@ -169,9 +175,12 @@ int main()
     create(5);
     inorder(root);
     search (10);
-    preorder();
+    preorder(root);
+    check(root);
     return 0;
 }
+
+
 
 
 
