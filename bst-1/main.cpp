@@ -150,22 +150,57 @@ void search(int key)
     //return p;
 }
 
-bool check(root)
+bool validate(struct node*r)
 {
-    if(root!=NULL)
+    if(r==NULL)
     {
-        if((root->left!=NULL && root->right !=NULL) || (root->left==NULL || root->right==NULL))
+        //cout<<"It is a Binary Search tree"<<endl;
+        return true;
+    }
+    
+    if(r->left!=NULL)
+    {
+        if(r->left->data > r->data)
         {
-            check(root->left);
-            check(root->right);
+            //cout<<"It is not a Binary Search tree"<<endl;
+            return false;
         }
         
         else 
         {
-            return false;
+            bool var1 = validate(r->left);
+            if(var1==false)
+            {
+                //cout<<"It is not a Binary Search tree"<<endl;
+                return false;
+            }
         }
     }
+    
+    if(r->right!=NULL)
+    {
+        if(r->right->data < r->data)
+        {
+            //cout<<"It is not a Binary Search tree"<<endl;
+            return false;
+        }
+        
+        else 
+        {
+            bool var1 = validate(r->right);
+            if(var1==false)
+            {
+                //cout<<"It is not a Binary Search tree"<<endl;
+                return false;
+            }
+        }
+    }
+    
+    //cout<<"It is a Binary Search tree"<<endl;
     return true;
+    
+    
+    
 }
 
 int main()
@@ -176,7 +211,13 @@ int main()
     inorder(root);
     search (10);
     preorder(root);
-    check(root);
+    bool is_bst=validate(root);
+    if(is_bst){
+        cout<<"\nIt is a Binary Search tree"<<endl;
+    }
+    else{
+        cout<<"\nIt is not a Binary Search tree"<<endl;
+    }
     return 0;
 }
 
