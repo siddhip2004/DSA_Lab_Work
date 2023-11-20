@@ -11,9 +11,12 @@ struct node
 struct node *root=NULL;
 
 
-void create(int q)
+void create(int n)
 {
-    
+    for(int i=0; i<n; i++){
+        int q;
+    cout<<"Enter the data of node "<<i+1<<": ";
+    cin>>q;
     node *r=(struct node *)malloc(sizeof(struct node));
     r->data=q;
     r->right=NULL;
@@ -43,7 +46,8 @@ void create(int q)
                 if(p==NULL)
                 {
                     a->right=r;
-                    return;
+                    //return;
+                    break;
                 }
             }
             
@@ -54,10 +58,14 @@ void create(int q)
                 if(p==NULL)
                 {
                     a->left=r;
-                    return;
+                    //return;
+                    break;
                 }
             }
         }
+        
+    }
+
         
     }
 }
@@ -205,9 +213,13 @@ bool validate(struct node*r)
 
 int main()
 {
-    create(10);
-    create(20);
-    create(5);
+    // create(10);
+    // create(20);
+    // create(5);
+    int size;
+    cout<<"Enter the no. of nodes in BST"<<endl;
+    cin>>size;
+    create(size);
     inorder(root);
     search (10);
     preorder(root);
