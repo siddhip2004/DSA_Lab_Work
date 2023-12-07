@@ -42,14 +42,14 @@ void  create (int n)
     
     while(p!=NULL)
     {
-        if(r->data>q->data && r->data<p->data)
+        if(r->data<q->data && r->data>p->data)
         {
             r->next=p;
             q->next=r;
             break;
         }
         
-        else if(r->data<q->data && q==start)
+        else if(r->data>q->data && q==start)
         {
             r->next=q;
             start=r;
@@ -63,13 +63,13 @@ void  create (int n)
         }
     }
     
-    if(r->data>q->data && p==NULL)
+    if(r->data<q->data && p==NULL)
     {
         r->next=NULL;
         q->next=r;
     }
     
-    else if(r->data<q->data && p==NULL)
+    else if(r->data>q->data && p==NULL)
     {
         r->next=q;
         start=r;
@@ -77,7 +77,7 @@ void  create (int n)
        
        
   }
-    }
+}
     
    
     
@@ -87,13 +87,13 @@ void display()
 {
     node *m=(node*)malloc(sizeof(node));
     m=start;
-    cout<<"The first element in the minimum priority queue is "<<m->data;
+    cout<<"The first element in the maximum priority queue is "<<m->data<<endl;
 }
 
 int main()
 {
     int d;
-    cout<<"Enter the total no. of elements of the minimum priority list"<<endl;
+    cout<<"Enter the total no. of elements of the maximum priority list"<<endl;
     cin>>d;
     create(d);
     display();

@@ -112,103 +112,61 @@ void preorder(struct node *p)
     }
 }
 
-void search(int key)
-{
-    node *p=(struct node *)malloc(sizeof(struct node)); 
-    p=root;
+// void search(int key)
+// {
+//     node *p=(struct node *)malloc(sizeof(struct node)); 
+//     p=root;
     
-    if(root==NULL)
-    {
-        cout<<"\nTree is empty"<<endl;
-    }
+//     if(root==NULL)
+//     {
+//         cout<<"\nTree is empty"<<endl;
+//     }
     
-    else{
-    while(p!=NULL)
-    {
-        if(p->data<key)
-        {
-            p=p->right;
+//     else{
+//     while(p!=NULL)
+//     {
+//         if(p->data<key)
+//         {
+//             p=p->right;
             
-            if(p==NULL)
-            {
-                cout<<"\nNo such value in the tree"<<endl;
-            }
-        }
+//             if(p==NULL)
+//             {
+//                 cout<<"\nNo such value in the tree"<<endl;
+//             }
+//         }
         
-        else if(p->data>key)
-        {
-            p=p->left;
+//         else if(p->data>key)
+//         {
+//             p=p->left;
             
-            if(p==NULL)
-            {
-                cout<<"\nNo such value in the tree"<<endl;
-            }
-        }
+//             if(p==NULL)
+//             {
+//                 cout<<"\nNo such value in the tree"<<endl;
+//             }
+//         }
         
-        else if(p->data==key)
-        {
-            cout<<"\nValue exists"<<endl;
-            break;
-        }
-    }
+//         else if(p->data==key)
+//         {
+//             cout<<"\nValue exists"<<endl;
+//             break;
+//         }
+//     }
     
-    //return p;
-    }
+//     //return p;
+//     }
     
-    //return p;
+//     //return p;
+// }
+
+bool isValidBST1(struct node* root, struct node* minNode, struct node* maxNode) {
+    if(!root) return true;
+    if(minNode && root->data <= minNode->data || maxNode && root->data >= maxNode->data)
+        return false;
+    return isValidBST1(root->left, minNode, root) && isValidBST1(root->right, root, maxNode);
 }
 
-bool validate(struct node*r)
-{
-    if(r==NULL)
-    {
-        //cout<<"It is a Binary Search tree"<<endl;
-        return true;
-    }
-    
-    if(r->left!=NULL)
-    {
-        if(r->left->data > r->data)
-        {
-            //cout<<"It is not a Binary Search tree"<<endl;
-            return false;
-        }
-        
-        else 
-        {
-            bool var1 = validate(r->left);
-            if(var1==false)
-            {
-                //cout<<"It is not a Binary Search tree"<<endl;
-                return false;
-            }
-        }
-    }
-    
-    if(r->right!=NULL)
-    {
-        if(r->right->data < r->data)
-        {
-            //cout<<"It is not a Binary Search tree"<<endl;
-            return false;
-        }
-        
-        else 
-        {
-            bool var1 = validate(r->right);
-            if(var1==false)
-            {
-                //cout<<"It is not a Binary Search tree"<<endl;
-                return false;
-            }
-        }
-    }
-    
-    //cout<<"It is a Binary Search tree"<<endl;
-    return true;
-    
-    
-    
+bool isValidBST(struct node* root) {
+    return isValidBST1(root, NULL, NULL);
 }
 
 int main()
@@ -220,10 +178,12 @@ int main()
     cout<<"Enter the no. of nodes in BST"<<endl;
     cin>>size;
     create(size);
+    cout<<"Inoder traversal is: ";
     inorder(root);
-    search (10);
+    //search (10);
+    cout<<endl;
     preorder(root);
-    bool is_bst=validate(root);
+    bool is_bst=isValidBST(root);
     if(is_bst){
         cout<<"\nIt is a Binary Search tree"<<endl;
     }

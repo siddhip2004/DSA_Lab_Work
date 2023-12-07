@@ -124,12 +124,19 @@ class stack_using_queues
 
 int main()
 {
-    char c;
-    cout<<"Enter the operation you want to peform"<<endl;
-    while(true)
-    {
-        
-    }
+    stack_using_queues s1;
+    s1.push(20);
+    s1.push(30);
+    s1.push(40);
+    cout<<"Displaying last element of the stack"<<endl;
+    s1.pop();
+    s1.func();
+    s1.push(50);
+    s1.push(60);
+    cout<<"Again Displaying last element of the modified stack"<<endl;
+    s1.pop();
+    s1.func();
+
     
     
     return 0;

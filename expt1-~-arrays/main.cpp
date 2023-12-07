@@ -109,7 +109,7 @@ void insert(int f[], int size)
   cin>>ele;
   cout<<"Enter the index no. where you want to insert"<<endl;
   cin>>index;
-   size = size+1;
+   //size = size+1;
   for(int i=1; i<=((size-1)-index); i++)
   {
       f[size-i]=f[size-(i+1)];

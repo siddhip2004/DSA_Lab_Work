@@ -92,13 +92,11 @@ void del(node *p)
 
 void execute()
 {
-    //while(start!=NULL){
-    
     node *p,*r;
     p=start;
     int round_time=0;
     cout<<"Processor Id     Execution time    Round-around-time"<<endl;
-   while(p->next!=NULL)
+   while(start!=NULL)
     {
         if(p->data>exetime)
         {
@@ -115,7 +113,11 @@ void execute()
             round_time=round_time+exetime;
             cout<<p->id<<"                 "<<exetime<<"                       "<<round_time<<endl;
             del(r);
-            p=p->next;
+            if(p->next==p) {
+                start=NULL;
+                break;
+            }
+            else p=p->next;
         }
         
         else if(p->data<exetime)
@@ -125,48 +127,29 @@ void execute()
             cout<<p->id<<"                 "<<p->data<<"                       "<<round_time<<endl;
             p->data=0;
             del(r);
-            p=p->next;
+            if(p->next==p) {
+                start=NULL;
+                break;
+            }
+            else p=p->next;
         }
         
     
     }
     
-        /*if(p->data>exetime)
-        {
-            p->data=p->data-exetime;
-            cout<<"Execution time for "<<p->id<<" is "<<exetime<<endl;
-            p=p->next;
-        }
-        
-        else if(p->data == exetime)
-        {
-            r=p;
-            p->data =0;
-            cout<<"Execution time for "<<p->id<<" is "<<exetime<<endl;
-            del(r);
-            p=p->next;
-        }
-        
-        else if(p->data<exetime)
-        {
-            r=p;
-            cout<<"Execution time for "<<p->id<<" is "<<p->data<<endl;
-            p->data=0;
-            del(r);
-            p=p->next;
-        }*/
-    
-//}
-    
 }
 
 int main()
 {
+    int n=0;
+    cout<<"Enter the no. of Processors you want: ";
+    cin>>n;
     
-    create(3);
+    create(n);
     execute();
-    
 }
+
+
 
 
 

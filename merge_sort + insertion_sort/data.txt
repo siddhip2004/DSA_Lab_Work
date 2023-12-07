@@ -1,0 +1,16 @@
+Insertion sort ->  size = 100,     time : 0.000000 sec 
+Merge sort     ->  size = 100,     time : 0.00000 sec 
+Insertion sort ->  size = 1000,     time : 0.00000 sec 
+Merge sort     ->  size = 1000,     time : 0.00000 sec 
+Insertion sort ->  size = 5000,     time : 0.00000 sec 
+Merge sort     ->  size = 5000,     time : 0.00000 sec 
+Insertion sort ->  size = 10000,     time : 1.00000 sec 
+Merge sort     ->  size = 10000,     time : 0.00000 sec 
+Insertion sort ->  size = 50000,     time : 7.00000 sec 
+Merge sort     ->  size = 50000,     time : 0.00000 sec 
+Insertion sort ->  size = 70000,     time : 14.00000 sec 
+Merge sort     ->  size = 70000,     time : 0.00000 sec 
+Insertion sort ->  size = 100000,     time : 28.00000 sec 
+Merge sort     ->  size = 100000,     time : 0.00000 sec 
+Insertion sort ->  size = 120000,     time : 40.00000 sec 
+Merge sort     ->  size = 120000,     time : 0.00000 sec 
